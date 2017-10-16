@@ -1,6 +1,8 @@
 const path = require('path');
 const rootPath = path.resolve(__dirname, '../');
 
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     entry: './src/index',
     output: {
@@ -16,16 +18,21 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.css$/,
-                loader: "babel-loader",
+            test: /\.css$/,
+            loader: "babel-loader",
+        },
+        {
+            test: /\.jsx?$/,
+            loader: "babel-loader",
+            options: {
+                presets: ["es2015", "react"]
             },
-            {
-                test: /\.jsx?$/,
-                loader: "babel-loader",
-                options: {
-                    presets: ["es2015", "react"]
-                },
-            }
+        }
         ]
     },
+    devServer: {
+        contentBase: path.resolve(rootPath, 'dist'),
+        port: 9000
+    },
+    plugins: [new HtmlWebpackPlugin()]
 };
