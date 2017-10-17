@@ -27,12 +27,18 @@ module.exports = {
             options: {
                 presets: ["es2015", "react"]
             },
-        }
+        }, {
+            test: /\.html$/,
+            loader: "html-loader",
+        },
         ]
     },
+    devtool: 'source-map',
     devServer: {
         contentBase: path.resolve(rootPath, 'dist'),
         port: 9000
     },
-    plugins: [new HtmlWebpackPlugin()]
+    plugins: [new HtmlWebpackPlugin({
+        template: './src/index.html'
+    })]
 };
