@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack-dev-server --config config/index.js",
-    "dev": "webpack --config config/index.js",
+    "dev": "webpack-dev-server --config config/index.js",
     "prod": "webpack --config config/index.js",
     "server": "json-server --watch server/interface.json"
   },
